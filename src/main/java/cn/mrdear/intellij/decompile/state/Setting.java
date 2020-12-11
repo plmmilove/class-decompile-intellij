@@ -21,6 +21,8 @@ public class Setting implements PersistentStateComponent<Setting> {
      * default -c
      */
     private String javap = "-c";
+
+    private String jad = "-p";
     /**
      * default
      */
@@ -68,6 +70,14 @@ public class Setting implements PersistentStateComponent<Setting> {
 
     public void setJavap(final String javap) {
         this.javap = javap;
+    }
+
+    public String getJad() {
+        return jad;
+    }
+
+    public void setJad(String jad) {
+        this.jad = jad;
     }
 
     public String getCfr() {

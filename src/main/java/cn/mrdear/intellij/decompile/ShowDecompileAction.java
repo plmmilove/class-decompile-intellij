@@ -1,5 +1,6 @@
 package cn.mrdear.intellij.decompile;
 
+import cn.mrdear.intellij.decompile.ui.*;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -26,11 +27,6 @@ import com.intellij.psi.PsiManager;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.org.objectweb.asm.ClassReader;
-
-import cn.mrdear.intellij.decompile.ui.ASMifiedToolPanel;
-import cn.mrdear.intellij.decompile.ui.ByteCodeToolPanel;
-import cn.mrdear.intellij.decompile.ui.CFRToolPanel;
-import cn.mrdear.intellij.decompile.ui.JavapToolPanel;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -179,6 +175,7 @@ public class ShowDecompileAction extends AnAction {
         if (classFile == null) {
             ApplicationManager.getApplication().runWriteAction(() -> {
                 JavapToolPanel.getInstance(project).setCode("// couldn't generate Javap view, no .class file found");
+                JadToolPanel.getInstance(project).setCode("// couldn't generate Jad view, no .class file found");
                 ByteCodeToolPanel.getInstance(project).setCode("// couldn't generate ByteCode view, no .class file found");
                 ASMifiedToolPanel.getInstance(project).setCode("// couldn't generate ASMified view, no .class file found");
                 CFRToolPanel.getInstance(project).setCode("// couldn't generate CFR view, no .class file found");
@@ -200,6 +197,7 @@ public class ShowDecompileAction extends AnAction {
             }
 
             JavapToolPanel.getInstance(project).decompile(path);
+            JadToolPanel.getInstance(project).decompile(path);
             ByteCodeToolPanel.getInstance(project).decompile(writer, reader);
             ASMifiedToolPanel.getInstance(project).decompile(writer, reader);
             CFRToolPanel.getInstance(project).decompile(path, writer, reader);

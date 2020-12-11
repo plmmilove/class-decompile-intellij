@@ -12,6 +12,7 @@ public class SettingConfigurationPanel {
 
     private JTextField javapField;
     private JTextField cfrField;
+    private JTextField jadField;
 
     private JPanel container;
 
@@ -30,6 +31,7 @@ public class SettingConfigurationPanel {
 
     public void setData(Setting data) {
         javapField.setText(data.getJavap());
+        jadField.setText(data.getJad());
         cfrField.setText(data.getCfr());
         skipDebugCheckBox.setSelected(data.isAsmSkipDebug());
         skipFrameCheckBox.setSelected(data.isAsmSkipFrames());
@@ -39,6 +41,7 @@ public class SettingConfigurationPanel {
 
     public void getData(Setting data) {
         data.setJavap(javapField.getText());
+        data.setJad(jadField.getText());
         data.setCfr(cfrField.getText());
         data.setAsmSkipDebug(skipDebugCheckBox.isSelected());
         data.setAsmSkipFrames(skipFrameCheckBox.isSelected());
@@ -49,6 +52,10 @@ public class SettingConfigurationPanel {
     public boolean isModified(Setting data) {
         if (javapField.getText() != null ? !javapField.getText().equals(data.getJavap()) : data.getJavap() != null)
             return true;
+
+        if (jadField.getText() != null ? !jadField.getText().equals(data.getJad()) : data.getJad() != null)
+            return true;
+
         if (cfrField.getText() != null ? !cfrField.getText().equals(data.getCfr()) : data.getCfr() != null)
             return true;
         if (skipDebugCheckBox.isSelected() != data.isAsmSkipDebug()) return true;

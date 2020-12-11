@@ -1,5 +1,6 @@
 package cn.mrdear.intellij.decompile.util;
 
+import cn.mrdear.intellij.decompile.ui.AbstractToolPanel;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
 import com.intellij.execution.process.ProcessOutputType;
@@ -20,9 +21,9 @@ public class ExternalToolsProcessListener extends ProcessAdapter {
 
     private StringWriter writer;
 
-    private JavapToolPanel panel;
+    private AbstractToolPanel panel;
 
-    public ExternalToolsProcessListener(StringWriter writer, JavapToolPanel panel) {
+    public ExternalToolsProcessListener(StringWriter writer, AbstractToolPanel panel) {
         this.writer = writer;
         this.panel = panel;
     }

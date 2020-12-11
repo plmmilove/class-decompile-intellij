@@ -25,6 +25,7 @@ public class DecompileToolWindowFactory implements ToolWindowFactory {
         manager.addContent(instance.createContent(ASMifiedToolPanel.getInstance(project), "ASMified", false));
         manager.addContent(instance.createContent(CFRToolPanel.getInstance(project), "CFR", false));
         manager.addContent(instance.createContent(JavapToolPanel.getInstance(project), "Javap", false));
+        manager.addContent(instance.createContent(JadToolPanel.getInstance(project), "Jad", false));
     }
 
 }
